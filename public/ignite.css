@@ -2,8 +2,21 @@ body,html{
     height: 100%;
     margin: 0;
     background: #7F7FD5;
-   background: -webkit-linear-gradient(to bottom right, #91EAE4, #88a8e4, #c181d4, #b13737, #e60624);
-    background: linear-gradient(to bottom right, #91EAE4, #88a8e4, #c181d4, #b13737, #e60624);
+    background: -webkit-linear-gradient(to bottom right, #ffc837, #ff8037, #752b00);
+    background: linear-gradient(to bottom right, #ffc837, #ff8037, #752b00);
+}
+
+.mainHeader {
+    position: relative;
+    top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.headerText.lineOne {
+    font-size: 50px;
+    font-family: 'Roboto', sans-serif;
 }
 
 .chat{
