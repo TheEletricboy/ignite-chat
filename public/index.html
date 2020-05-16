@@ -11,17 +11,23 @@
      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
+
+
+
+
      <div class="mainHeader">
-		 <div class="headerText lineOne">IGNITE</div>
+		 <div class="headerText lineOne">WELCOME TO IGNITE</div>
+	 </div>
+	 <div class="logo">
+		<img src="images/logo_ignite.png" class="logo_ignite">
 	 </div>
 	 <div class="messageContainer">
 		<ul id="messages"></ul>
 	 </div>
+
 	 <!-- Create a form to send the message-->
 	<form onsubmit="return sendMessage();">
-		<input id="message" placeholder="Enter Message" autocomplete="off">
-
-		<input type="submit">
+		<input id="message" placeholder="Enter Message" autocomplete="off"><input type="submit">
 	</form>
 
 
@@ -127,7 +133,7 @@
 								<div class="input-group-append">
 									<span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
 								</div>
-								<textarea name="" class="form-control type_msg" placeholder="Type your message..."></textarea>
+								<textarea name="" class="form-control type_msg" placeholder="Type here..."></textarea>
 								<div class="input-group-append">
 									<span class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
 								</div>

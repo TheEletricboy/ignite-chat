@@ -10,43 +10,58 @@ body,html{
 
 .mainHeader {
     position: relative;
-    top: 100px;
+    top: 2rem;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
 }
 
 .headerText.lineOne {
-    font-size: 50px;
+    font-size: 20px;
     font-family: 'Roboto', sans-serif;
+}
+
+.logo {
+    top: 0;
+    margin: 2rem auto;
+    width: 200px;
+    height: 200px;
+}
+
+.logo_ignite {
+    width: 200px;
+    height: 200px;
 }
 
 .messageContainer {
     position: absolute;
     overflow: scroll;
-    top: 200px;
-    left: 490px;
+    top: 180px;
+    right: 0;
     width: 370px;
     height: 249px;
 }
 
 form {
-    position: relative;
-    top: 380px;
-    margin-left: auto;
-    margin-right: auto;
+    position: absolute;
+    top: 440px;
+    right: 0;
     text-align: center;
 }
 
 .chat{
-    position: relative;
-    margin-top: 400px;
+    position: absolute;
+    top: 17.5rem;
     margin-bottom: auto;
 }
+
 .card{
-    height: 500px;
-    border-radius: 15px !important;
-    background-color: rgba(80, 80, 80, 0.4) !important;
+    height: auto;
+    width: 50rem;
+    border-radius: 1.1rem !important;
+    background-color: #50505066 !important;
+    margin: 0 auto 3rem auto;
+    border: 1px solid #3d1a02c5;
 }
 .contacts_body{
     padding:  0.75rem 0 !important;
@@ -54,15 +69,40 @@ form {
     white-space: nowrap;
 }
 .msg_card_body{
-    overflow-y: auto;
+    overflow-y: scroll;
 }
+
+/* ============Scroll Bar customization ==============*/
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f100;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #5b270188;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2e130088;
+  }
+  /* ============Scroll Bar customization ==============*/
+  
+
 .card-header{
     border-radius: 15px 15px 0 0 !important;
     border-bottom: 0 !important;
 }
 .card-footer{
-border-radius: 0 0 15px 15px !important;
+border-radius: 0 0 0.625rem 0.625rem !important;
     border-top: 0 !important;
+background-color: #5b270188;
 }
 .container{
     align-content: center;
@@ -78,7 +118,7 @@ border-radius: 0 0 15px 15px !important;
    outline:0px !important;
 }
 .type_msg{
-    background-color: rgba(0,0,0,0.3) !important;
+    background-color: #0000008a !important;
     border:0 !important;
     color:white !important;
     height: 60px !important;
@@ -90,14 +130,14 @@ border-radius: 0 0 15px 15px !important;
 }
 .attach_btn{
 border-radius: 15px 0 0 15px !important;
-background-color: rgba(0,0,0,0.3) !important;
+background-color: #0000008a !important;
     border:0 !important;
     color: white !important;
     cursor: pointer;
 }
 .send_btn{
 border-radius: 0 15px 15px 0 !important;
-background-color: rgba(0,0,0,0.3) !important;
+background-color: #0000008a !important;
     border:0 !important;
     color: white !important;
     cursor: pointer;
@@ -192,7 +232,8 @@ margin-top: auto;
 margin-bottom: auto;
 margin-right: 10px;
 border-radius: 25px;
-background-color: #78e08f;
+background: -webkit-linear-gradient(to bottom right, #ffc837, #ffb237, #752b00) !important;
+background: linear-gradient(to bottom right, #ffa837, #ff8037, #be5b21) !important;
 padding: 10px;
 position: relative;
 }
@@ -212,6 +253,7 @@ font-size: 10px;
 }
 .msg_head{
 position: relative;
+background-color: #5b270188;
 }
 #action_menu_btn{
 position: absolute;
