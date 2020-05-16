@@ -4,16 +4,26 @@
      <meta charset="UTF-8">
      <meta name="viewport" content="width=1920, initial-scale=1.0">
      <title>Ignite Chat</title>
-     <link rel="stylesheet" href="ignite.css">
+	 <link rel="stylesheet" href="ignite.css">
+	 <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
      <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
      <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-	 <div class="mainHeader">
-		 <div class="headerText lineOne">IGNITE</div>
-	 </div>
-     <ul id="messages"></ul>
+     <h1>Ignite Chat</h1>
+	 <ul id="messages"></ul>
+	 <!-- Create a form to send the message-->
+	<form onsubmit="return sendMessage();">
+		<input id="message" placeholder="Enter Message" autocomplete="off">
+
+		<input type="submit">
+	</form>
+
+
+
+
+
 		<div class="container-fluid h-100">
 			<div class="row justify-content-center h-100">
 				<div class="col-md-8 col-xl-6 chat">
@@ -143,8 +153,13 @@
 
 <!-- Initialize Firebase -->
 <script src="/__/firebase/init.js"></script>
+
 <script>
-     var myName = prompt("Enter your Name: ", "Ex: John Doe");
+     var myName = prompt("Enter your Name:");
+
+	 if (!myName) {
+		myName = "Anonymous";
+	 }
 
      function sendMessage() {
           // get message
@@ -195,21 +210,6 @@
      })
 </script>
 
-<script src="/__/public/ignite.js"></script>
-
-<!-- Create a form to send the message-->
-<form onsubmit="return sendMessage();">
-     <input id="message" placeholder="Enter Message" autocomplete="off">
-
-     <input type="submit">
-</form>
-
-
-
-
-
-
-
-
+<script src="/ignite.js"></script>
 
 </html>
