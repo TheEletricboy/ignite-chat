@@ -2,8 +2,8 @@ body,html{
     height: 100%;
     margin: 0;
     background: #7F7FD5;
-   background: -webkit-linear-gradient(to bottom right, #91EAE4, #88a8e4, #c181d4, #b13737, #e60624);
-    background: linear-gradient(to bottom right, #91EAE4, #88a8e4, #c181d4, #b13737, #e60624);
+    background: -webkit-linear-gradient(to bottom right,#ffd900, #ff9c1b, #ff9028, #ff6528, #ff5100);
+    background: linear-gradient(to bottom right, #ffd900, #ff9c1b, #ff9028, #ff6528, #ff5100);
 }
 
 .chat{
