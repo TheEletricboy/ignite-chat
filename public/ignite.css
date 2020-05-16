@@ -1,5 +1,7 @@
 body,html{
+    position: fixed;
     height: 100%;
+    width: 100%;
     margin: 0;
     background: #7F7FD5;
     background: -webkit-linear-gradient(to bottom right, #ffc837, #ff8037, #752b00) !important;
