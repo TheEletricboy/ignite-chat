@@ -7,18 +7,19 @@ body,html{
     background: -webkit-linear-gradient(to bottom right, #ffc837, #ff8037, #752b00) !important;
     background: linear-gradient(to bottom right, #ffc837, #ff8037, #752b00) !important;
 }
-
-.mainHeader {
-    position: relative;
-    top: 2rem;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+.input-group-append {
+    height: 2.3rem;
 }
-
-.headerText.lineOne {
-    font-size: 20px;
-    font-family: 'Roboto', sans-serif;
+.message_form {
+    display: flex;
+    top: 0;
+}
+.message {
+    background-color: #0000008a !important;
+    border:0 !important;
+    color:white !important;
+    height: 60px !important;
+    overflow-y: auto;
 }
 
 .logo {
@@ -56,7 +57,7 @@ form {
 }
 
 .card{
-    height: auto;
+    height: 40rem;
     width: 50rem;
     border-radius: 1.1rem !important;
     background-color: #50505066 !important;
