@@ -52,7 +52,7 @@
 								</ul>
 							</div>
 						</div>
-						<div class="card-body msg_card_body">
+						<div class="card-body msg_card_body" id="chat_wrapper">
 							<div class="d-flex justify-content-start mb-4">
 								<div class="img_cont_msg">
 									<img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg">
@@ -218,11 +218,8 @@
 
 	 // autoscroll down function
 	 function autoScrollDown() {
-		var cardBody = document.getElementsByClassName('msg_card_body');
-		console.log(cardBody.scrollTop + " SCROLL TOP");
-		console.log(cardBody.scrollHeight + " SCROLL height");
-		console.log(cardBody + " cardBody");
-		cardBody.scrollTop = cardBody.scrollHeight;
+		 var cardBody = document.getElementsByClassName('msg_card_body')[0];
+		 cardBody.scrollTop = cardBody.scrollHeight;
 	}
 
      //attach listener for delete message
