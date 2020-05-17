@@ -10,6 +10,7 @@ body,html{
 .message_form {
     width: 100%;
     padding-left: 1.5%;
+    padding-right: 2%;
     border-radius: 500px !important;
     position: relative;
     display: flex;
@@ -64,14 +65,14 @@ body,html{
 }
 
 .chat{
-    position: absolute;
-    top: 17.5rem;
-    margin-bottom: auto;
+    top: 2rem;
+    height: 85%;
 }
 
 .card{
-    height: 40rem;
-    width: 50rem;
+    width: 35rem;
+    height: 100%;
+    display: flex;
     border-radius: 1.1rem !important;
     background-color: #50505066 !important;
     margin: 0 auto 3rem auto;
@@ -84,6 +85,7 @@ body,html{
 }
 .msg_card_body{
     overflow-y: scroll;
+    height: auto;
 }
 
 /* ============Scroll Bar customization ==============*/
@@ -170,9 +172,9 @@ background-color: #0000008a !important;
     background-color: rgba(0,0,0,0.3);
 }
 .user_img{
-    height: 70px;
-    width: 70px;
-    border:1.5px solid #f5f6fa;
+    height: 100%;
+    width: 100%;
+    right: 0;
 
 }
 .user_img_msg{
@@ -182,9 +184,9 @@ background-color: #0000008a !important;
 
 }
 .img_cont{
-    position: relative;
-    height: 70px;
-    width: 70px;
+    margin: 0 auto 0 auto;
+    height: 6rem;
+    width: 6rem;
 }
 .rounded-circle.user_img_msg{
     height: 1.83rem;
@@ -345,4 +347,11 @@ margin-bottom: 15px !important;
   /* #### Desktops #### */
   @media screen and (min-width: 1024px){
     /* some CSS here */
+    /* .html {
+        overflow-y: hidden;
+        width: 1080px !important;
+    }
+    .card {
+        height: 1000px !important;
+    } */
   }
