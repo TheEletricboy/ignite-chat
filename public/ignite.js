@@ -3,19 +3,21 @@
 var myName = 'Miguel';
 // var myName = prompt("Enter your Name:");
 var date = new Date();
+var now = pad(date.getHours(),2) + ':' + pad(date.getMinutes(),2);
 
 var imgUrl = 'images/';
 var senderPictures = {
     default: imgUrl += 'Chat_Heads/Logo_ignite_chat.png'
 }
 
+
+
 // Build Bubbles
 var buildChatBubbles = {
     // Sender
     senderContainer: '<div class="d-flex justify-content-end mb-4">',
         senderBubble: '<div class="msg_cotainer_send" id="message-',
-            senderTimeSent: '<span class="msg_time_send">' + 
-                date.getHours() + ':' + date.getMinutes() + '</span>',
+            senderTimeSent: '<span class="msg_time_send">' + now + '</span></div>',
 
         senderPicContainer: '<div class="img_cont_msg">',
             senderPic: '<img src="' + senderPictures.default + '" class="rounded-circle user_img_msg">',
@@ -25,8 +27,7 @@ var buildChatBubbles = {
         receiverPicContainer: '<div class="img_cont_msg">',
              receiverPic: '<img src="' + senderPictures.default + '" class="rounded-circle user_img_msg">',
         receiverBubble: '<div class="msg_cotainer"',
-             receiverTimeSent: '<span class="msg_time">' + 
-                date.getHours() + ':' + date.getMinutes() + '</span>'
+             receiverTimeSent: '<span class="msg_time">' + now + '</span></div>'
             
 }
 
@@ -148,4 +149,8 @@ firebase.database().ref("messages").on("child_removed", function (snapshot) {
 function autoScrollDown() {
     var cardBody = document.getElementsByClassName('msg_card_body')[0];
     cardBody.scrollTop = cardBody.scrollHeight;
+}
+
+function pad(num, size){ 
+    return ('000000000' + num).substr(-size);
 }
