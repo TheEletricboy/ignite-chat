@@ -124,7 +124,7 @@
 								</div>
 								<!-- <textarea name="" class="form-control type_msg" placeholder="Type here..."></textarea> -->
 								<!-- Create a form to send the message-->
-								<form onsubmit="return sendMessage();" class="message_form">
+								<form id="message_form" class="message_form">
 									<input class="message" id="message" placeholder="Enter Message" autocomplete="off"><input type="submit">
 								</form>
 								<div class="input-group-append">
@@ -171,8 +171,9 @@
 		});
 	 }
 
-	function sendMessage() {
-		autoScrollDown();
+	$('#message_form').submit(function(e){
+		// prevent form from submitting
+		e.preventDefault();
 		// get message
 		var messageInput = document.getElementById("message");
 		var message = messageInput.value;
@@ -187,9 +188,7 @@
 
 		// delete message after sending
 		messageInput.value = '';
-		// prevent form from submitting
-		return false;
-	}
+	});
 
      //listen for incoming messages
      firebase.database().ref("messages").on("child_added", function (snapshot) {
@@ -205,7 +204,8 @@
                htmlCustom += snapshot.val().sender + ": " + snapshot.val().message;
           htmlCustom += "</li>";
 
-          document.getElementById("messages").innerHTML += htmlCustom;
+		  document.getElementById("messages").innerHTML += htmlCustom;
+		  autoScrollDown();
      });
 
      function deleteMessage(self) {
