@@ -164,24 +164,32 @@
 		myName = "Anonymous";
 	 }
 
-     function sendMessage() {
-          // get message
-		  var messageInput = document.getElementById("message");
-          var message = messageInput.value;
+	 if (myName) {
+		$( document ).ready(function() {
+			console.log( "ready!" );
+			autoScrollDown();
+		});
+	 }
 
-		  console.log(message);
+	function sendMessage() {
+		autoScrollDown();
+		// get message
+		var messageInput = document.getElementById("message");
+		var message = messageInput.value;
 
-          //save in database
-          firebase.database().ref('messages').push().set({
-               "sender": myName,
-               "message": message
-          });
+		console.log(message);
 
-          // delete message after sending
-          messageInput.value = '';
-          // prevent form from submitting
-          return false;
-     }
+		//save in database
+		firebase.database().ref('messages').push().set({
+			"sender": myName,
+			"message": message
+		});
+
+		// delete message after sending
+		messageInput.value = '';
+		// prevent form from submitting
+		return false;
+	}
 
      //listen for incoming messages
      firebase.database().ref("messages").on("child_added", function (snapshot) {
@@ -207,6 +215,15 @@
           //delete message
           firebase.database().ref("messages").child(messageId).remove();
      }
+
+	 // autoscroll down function
+	 function autoScrollDown() {
+		var cardBody = document.getElementsByClassName('card-body');
+		console.log(cardBody.scrollTop + " SCROLL TOP");
+		console.log(cardBody.scrollHeight + " SCROLL height");
+		console.log(cardBody + " cardBody");
+		cardBody.scrollTop = cardBody.scrollHeight;
+	}
 
      //attach listener for delete message
      firebase.database().ref("messages").on("child_removed", function (snapshot) {

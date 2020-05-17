@@ -13,6 +13,7 @@ body,html{
     top: 0;
 }
 .message {
+    outline: none;
     background-color: #0000008a !important;
     border:0 !important;
     color:white !important;
