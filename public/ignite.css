@@ -7,10 +7,8 @@ body,html{
     background: -webkit-linear-gradient(to bottom right, #ffc837, #ff8037, #752b00) !important;
     background: linear-gradient(to bottom right, #ffc837, #ff8037, #752b00) !important;
 }
-.input-group-append {
-    height: 2.3rem;
-}
 .message_form {
+    position: relative;
     display: flex;
     top: 0;
 }
@@ -18,7 +16,7 @@ body,html{
     background-color: #0000008a !important;
     border:0 !important;
     color:white !important;
-    height: 60px !important;
+    width: 40.35rem;
     overflow-y: auto;
 }
 
@@ -41,13 +39,6 @@ body,html{
     right: 0;
     width: 370px;
     height: 249px;
-}
-
-form {
-    position: absolute;
-    top: 440px;
-    right: 0;
-    text-align: center;
 }
 
 .chat{
