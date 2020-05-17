@@ -40,6 +40,7 @@ $('#message_form').submit(function(e){
    messageInput.value = '';
 });
 
+
 //listen for incoming messages
 firebase.database().ref("messages").on("child_added", function (snapshot) {
      var htmlCustom = "";
@@ -66,14 +67,15 @@ function deleteMessage(self) {
      firebase.database().ref("messages").child(messageId).remove();
 }
 
+
+//attach listener for delete message
+firebase.database().ref("messages").on("child_removed", function (snapshot) {
+    // remove message node
+    document.getElementById("message-" + snapshot.key).innerHTML = "This message has been removed";
+})
+
 // autoscroll down function
 function autoScrollDown() {
     var cardBody = document.getElementsByClassName('msg_card_body')[0];
     cardBody.scrollTop = cardBody.scrollHeight;
 }
-
-//attach listener for delete message
-firebase.database().ref("messages").on("child_removed", function (snapshot) {
-     // remove message node
-     document.getElementById("message-" + snapshot.key).innerHTML = "This message has been removed";
-})
