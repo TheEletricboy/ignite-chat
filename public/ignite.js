@@ -1,7 +1,7 @@
 
 // ----------------- Public Vars -----------------
 var myName = prompt("Enter your Name:");
-
+var date = new Date();
 
 
 
@@ -14,6 +14,8 @@ if (myName) {
    $( document ).ready(function() {
        console.log( "ready!" );
        autoScrollDown();
+       //console.log("NHAAAAAAA" + Ignite.CONSTANTS(imgUrl));
+       //console.log(date.getHours());
    });
 }
 
@@ -44,6 +46,16 @@ $('#message_form').submit(function(e){
 //listen for incoming messages
 firebase.database().ref("messages").on("child_added", function (snapshot) {
      var htmlCustom = "";
+
+     // SENDER (Me)
+     if (snapshot.val().sender === myName) {
+        htmlCustom += '<div class="d-flex justify-content-end mb-4">';
+            
+     } else { // OTHER PEOPLE
+        htmlCustom += '<div class="d-flex justify-content-start mb-4">';
+     }
+
+
      // give each message a unique ID
      htmlCustom += "<li id='message-" + snapshot.key + "'>";
           //show delete vutton if message is sent by me
@@ -52,10 +64,11 @@ firebase.database().ref("messages").on("child_added", function (snapshot) {
                     htmlCustom += "Delete"
                htmlCustom += "</button>";
           }
-          htmlCustom += snapshot.val().sender + ": " + snapshot.val().message;
+     //display message
+     htmlCustom += snapshot.val().sender + ": " + snapshot.val().message;
      htmlCustom += "</li>";
 
-     document.getElementById("messages").innerHTML += htmlCustom;
+     document.getElementById("msg_card_body").innerHTML += htmlCustom;
      autoScrollDown();
 });
 
@@ -78,4 +91,26 @@ firebase.database().ref("messages").on("child_removed", function (snapshot) {
 function autoScrollDown() {
     var cardBody = document.getElementsByClassName('msg_card_body')[0];
     cardBody.scrollTop = cardBody.scrollHeight;
+}
+
+function buildChatBubbles() {
+    var closeDiv = '</div>';
+
+    // Sender
+    var senderContainer = '<div class="d-flex justify-content-end mb-4">';
+        var senderBubble = '<div class="msg_cotainer_send">';
+            var senderTimeSent = '<span class="msg_time_send">' + 
+                date.getHours() + ':' + date.getMinutes + '</span>';
+
+        var senderPicContainer = '<div class="img_cont_msg">';
+            var senderPic = '<img src:"' + senderPictures.default + '" class="rounded-circle user_img_msg">';
+
+    // Receiver
+    var receiverContainer = '<div class="d-flex justify-content-start mb-4">';
+        var receiverPicContainer = '<div class="img_cont_msg">';
+            var receiverPic = '<img src:"' + senderPictures.secondary + '" class="rounded-circle user_img_msg">';
+        var receiverBubble = '<div class="msg_cotainer">';
+            var receiverTimeSent = '<span class="msg_time">' + 
+                date.getHours() + ':' + date.getMinutes + '</span>';
+            
 }
