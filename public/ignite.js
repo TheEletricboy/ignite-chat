@@ -1,8 +1,34 @@
 
 // ----------------- Public Vars -----------------
-var myName = prompt("Enter your Name:");
+var myName = 'Miguel';
+// var myName = prompt("Enter your Name:");
 var date = new Date();
 
+var imgUrl = 'images/';
+var senderPictures = {
+    default: imgUrl += 'Chat_Heads/Logo_ignite_chat.png'
+}
+
+// Build Bubbles
+var buildChatBubbles = {
+    // Sender
+    senderContainer: '<div class="d-flex justify-content-end mb-4">',
+        senderBubble: '<div class="msg_cotainer_send" id="message-',
+            senderTimeSent: '<span class="msg_time_send">' + 
+                date.getHours() + ':' + date.getMinutes() + '</span>',
+
+        senderPicContainer: '<div class="img_cont_msg">',
+            senderPic: '<img src="' + senderPictures.default + '" class="rounded-circle user_img_msg">',
+
+    // Receiver
+    receiverContainer: '<div class="d-flex justify-content-start mb-4">',
+        receiverPicContainer: '<div class="img_cont_msg">',
+             receiverPic: '<img src="' + senderPictures.default + '" class="rounded-circle user_img_msg">',
+        receiverBubble: '<div class="msg_cotainer"',
+             receiverTimeSent: '<span class="msg_time">' + 
+                date.getHours() + ':' + date.getMinutes() + '</span>'
+            
+}
 
 
 
@@ -13,11 +39,18 @@ if (!myName) {
 if (myName) {
    $( document ).ready(function() {
        console.log( "ready!" );
+       console.log(senderPictures.default);
        autoScrollDown();
-       //console.log("NHAAAAAAA" + Ignite.CONSTANTS(imgUrl));
-       //console.log(date.getHours());
    });
 }
+
+
+
+
+
+
+
+
 
 
 // ----------------- Functions -----------------
@@ -42,33 +75,57 @@ $('#message_form').submit(function(e){
    messageInput.value = '';
 });
 
-
+// DISPLAY IMAGES
 //listen for incoming messages
 firebase.database().ref("messages").on("child_added", function (snapshot) {
      var htmlCustom = "";
+     var closeDiv = '</div>';
 
      // SENDER (Me)
      if (snapshot.val().sender === myName) {
-        htmlCustom += '<div class="d-flex justify-content-end mb-4">';
+        htmlCustom += buildChatBubbles.senderContainer;
+            htmlCustom += "<button data-id='" + snapshot.key + "' class='delete_icon' onclick='deleteMessage(this)'></button>",
+            htmlCustom += buildChatBubbles.senderBubble + snapshot.key + '">';
+            htmlCustom += snapshot.val().sender + ": " + snapshot.val().message;
+                htmlCustom += buildChatBubbles.senderTimeSent;
+            htmlCustom += buildChatBubbles.senderPicContainer;
+                htmlCustom += buildChatBubbles.senderPic;
+            
+            htmlCustom += closeDiv;
+            htmlCustom += closeDiv;
+            htmlCustom += closeDiv;
+            htmlCustom += closeDiv;
+            htmlCustom += closeDiv;
             
      } else { // OTHER PEOPLE
-        htmlCustom += '<div class="d-flex justify-content-start mb-4">';
+        htmlCustom += buildChatBubbles.receiverContainer;
+            htmlCustom += buildChatBubbles.receiverPicContainer;
+                htmlCustom += buildChatBubbles.receiverPic + closeDiv;
+            htmlCustom += buildChatBubbles.receiverBubble + snapshot.key + '">';
+            htmlCustom += snapshot.val().sender + ": " + snapshot.val().message;
+                htmlCustom += buildChatBubbles.receiverTimeSent;
+        
+        htmlCustom += closeDiv;
+        htmlCustom += closeDiv;
+        htmlCustom += closeDiv;
+        htmlCustom += closeDiv;
+        htmlCustom += closeDiv;
      }
 
 
-     // give each message a unique ID
-     htmlCustom += "<li id='message-" + snapshot.key + "'>";
-          //show delete vutton if message is sent by me
-          if (snapshot.val().sender === myName) {
-               htmlCustom += "<button data-id='" + snapshot.key + "' onclick='deleteMessage(this)'>";
-                    htmlCustom += "Delete"
-               htmlCustom += "</button>";
-          }
-     //display message
-     htmlCustom += snapshot.val().sender + ": " + snapshot.val().message;
-     htmlCustom += "</li>";
+     //give each message a unique ID
+    //  htmlCustom += "<li id='message-" + snapshot.key + "'>";
+    //       //show delete vutton if message is sent by me
+    //       if (snapshot.val().sender === myName) {
+    //            htmlCustom += "<button data-id='" + snapshot.key + "' onclick='deleteMessage(this)'>";
+    //                 htmlCustom += "Delete"
+    //            htmlCustom += "</button>";
+    //       }
+    //  //display message
+    //  htmlCustom += snapshot.val().sender + ": " + snapshot.val().message;
+    //  htmlCustom += "</li>";
 
-     document.getElementById("msg_card_body").innerHTML += htmlCustom;
+     document.getElementById("chat_wrapper").innerHTML += htmlCustom;
      autoScrollDown();
 });
 
@@ -91,26 +148,4 @@ firebase.database().ref("messages").on("child_removed", function (snapshot) {
 function autoScrollDown() {
     var cardBody = document.getElementsByClassName('msg_card_body')[0];
     cardBody.scrollTop = cardBody.scrollHeight;
-}
-
-function buildChatBubbles() {
-    var closeDiv = '</div>';
-
-    // Sender
-    var senderContainer = '<div class="d-flex justify-content-end mb-4">';
-        var senderBubble = '<div class="msg_cotainer_send">';
-            var senderTimeSent = '<span class="msg_time_send">' + 
-                date.getHours() + ':' + date.getMinutes + '</span>';
-
-        var senderPicContainer = '<div class="img_cont_msg">';
-            var senderPic = '<img src:"' + senderPictures.default + '" class="rounded-circle user_img_msg">';
-
-    // Receiver
-    var receiverContainer = '<div class="d-flex justify-content-start mb-4">';
-        var receiverPicContainer = '<div class="img_cont_msg">';
-            var receiverPic = '<img src:"' + senderPictures.secondary + '" class="rounded-circle user_img_msg">';
-        var receiverBubble = '<div class="msg_cotainer">';
-            var receiverTimeSent = '<span class="msg_time">' + 
-                date.getHours() + ':' + date.getMinutes + '</span>';
-            
 }

@@ -17,10 +17,19 @@ body,html{
     background-color: #0000008a !important;
     border:0 !important;
     color:white !important;
-    width: 40.35rem;
+    width: 40rem;
     overflow-y: auto;
 }
+.delete_icon {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-image: url('images/bin_icon.png');
 
+    border-radius: 4.16rem;
+    width: 1.83rem;
+    height: 1.83rem;
+}
 .logo {
     top: 0;
     margin: 2rem auto;
@@ -171,9 +180,9 @@ background-color: #0000008a !important;
     height: 70px;
     width: 70px;
 }
-.img_cont_msg{
-    height: 40px;
-    width: 40px;
+.rounded-circle.user_img_msg{
+    height: 1.83rem;
+    width: 1.83rem;
 }
 .online_icon{
 position: absolute;
