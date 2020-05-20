@@ -313,6 +313,7 @@ margin-bottom: 15px !important;
 @media all and (max-width: 485px) {
     .card {
         width: auto;
+        border-radius: 0px !important;
     }
     .msg_cotainer_send, .msg_cotainer {
         font-size: 0.9rem;
@@ -325,5 +326,25 @@ margin-bottom: 15px !important;
     }
     .msg_head {
         border-radius: 0 !important;
+    }
+    .card-footer {
+        border-radius: 0 !important;
+    }
+    .message_form {
+        padding-top: 0.9rem;
+        padding-bottom: 0.9rem;
+    }
+    .message {
+        border-radius: 25px;
+        background-color: rgba(0, 0, 0, 0.534) !important;
+        padding-left: 0.7rem;
+    }
+    .send_button {
+        color: #ffffffaf !important;
+        font-size: 0.9rem;
+    }
+    .img_cont {
+        height: 3rem;
+        width: 3rem;
     }
 }
