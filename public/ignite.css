@@ -241,8 +241,8 @@ position: relative;
 max-width: 50%;
 margin-top: auto;
 margin-bottom: auto;
-margin-right: 10px;
-border-radius: 25px;
+margin-right: 0.4rem;
+border-radius: 1.2rem;
 background: -webkit-linear-gradient(to bottom right, #ffc837, #ffb237, #752b00) !important;
 background: linear-gradient(to bottom right, #ffa837, #ff8037, #be5b21) !important;
 padding: 10px;
@@ -310,48 +310,20 @@ margin-bottom: 15px !important;
 }
 
 /* #### Mobile Phones Portrait #### */
-@media screen and (max-device-width: 480px) and (orientation: portrait){
-    /* some CSS here */
-  }
-  
-  /* #### Mobile Phones Landscape #### */
-  @media screen and (max-device-width: 640px) and (orientation: landscape){
-    /* some CSS here */
-  }
-  
-  /* #### Mobile Phones Portrait or Landscape #### */
-  @media screen and (max-device-width: 640px){
-    /* some CSS here */
-  }
-  
-  /* #### iPhone 4+ Portrait or Landscape #### */
-  @media screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 2){
-    /* some CSS here */
-  }
-  
-  /* #### iPhone 5 Portrait or Landscape #### */
-  @media (device-height: 568px) and (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2){
-    /* some CSS here */
-  }
-  
-  /* #### iPhone 6 and 6 plus Portrait or Landscape #### */
-  @media (min-device-height: 667px) and (min-device-width: 375px) and (-webkit-min-device-pixel-ratio: 3){
-    /* some CSS here */
-  }
-  
-  /* #### Tablets Portrait or Landscape #### */
-  @media screen and (min-device-width: 768px) and (max-device-width: 1024px){
-    /* some CSS here */
-  }
-  
-  /* #### Desktops #### */
-  @media screen and (min-width: 1024px){
-    /* some CSS here */
-    /* .html {
-        overflow-y: hidden;
-        width: 1080px !important;
-    }
+@media all and (max-width: 485px) {
     .card {
-        height: 1000px !important;
-    } */
-  }
+        width: auto;
+    }
+    .msg_cotainer_send, .msg_cotainer {
+        font-size: 0.9rem;
+        line-height: 1rem;
+    }
+    .chat {
+        height: 100%;
+        top: 0;
+        padding: 0;
+    }
+    .msg_head {
+        border-radius: 0 !important;
+    }
+}
