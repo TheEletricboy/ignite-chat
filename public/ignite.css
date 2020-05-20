@@ -339,6 +339,9 @@ margin-bottom: 15px !important;
         width: auto;
         border-radius: 0px !important;
     }
+    .msg_card_body {
+        padding-right: 0.3rem;
+    }
     .msg_cotainer_send, .msg_cotainer {
         font-size: 0.9rem;
         line-height: 1rem;
