@@ -309,8 +309,32 @@ margin-bottom: 15px !important;
 }
 }
 
-/* #### Mobile Phones Portrait #### */
-@media all and (max-width: 485px) {
+/* #### Mobile Phones #### */
+@media all and (max-width: 590px) {
+
+    /* ============Scroll Bar customization ==============*/
+    /* width */
+    ::-webkit-scrollbar {
+        width: 4px;
+    }
+    
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #f1f1f100;
+    }
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #5b270188;
+        border-radius: 50px;
+    }
+    
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #2e130088;
+    }
+    /* ============Scroll Bar customization ==============*/
+
     .card {
         width: auto;
         border-radius: 0px !important;
@@ -338,6 +362,8 @@ margin-bottom: 15px !important;
         border-radius: 25px;
         background-color: rgba(0, 0, 0, 0.534) !important;
         padding-left: 0.7rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;;
     }
     .send_button {
         color: #ffffffaf !important;
