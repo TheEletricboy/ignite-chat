@@ -7,6 +7,34 @@ body,html{
     background: -webkit-linear-gradient(to bottom right, #ffc837, #ff8037, #752b00) !important;
     background: linear-gradient(to bottom right, #ffc837, #ff8037, #752b00) !important;
 }
+.popupWrapper {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(images/background_mountain.jpg);
+    z-index: 99;
+
+}
+.popupBackground {
+    margin-top: 20rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    background-color: #8b8b8b4f;
+    border-radius: 5px;
+    width: 25rem !important;
+    height: 35rem;
+
+    -webkit-backdrop-filter: blur(10px) !important;
+    backdrop-filter: blur(10px) !important;
+}
+.popupForeground {
+    backdrop-filter: blur(0.8)
+}
 .message_form {
     width: 100%;
     padding-left: 1.5%;
