@@ -82,6 +82,10 @@ firebase.database().ref("messages").on("child_added", function (snapshot) {
      var htmlCustom = "";
      var closeDiv = '</div>';
 
+     var firstSenderBubbleObj = [];
+     var senderBubbleObj = [];
+
+
      // SENDER (Me)
      if (snapshot.val().sender === myName) {
         htmlCustom += buildChatBubbles.senderContainer;
@@ -97,6 +101,15 @@ firebase.database().ref("messages").on("child_added", function (snapshot) {
             htmlCustom += closeDiv;
             htmlCustom += closeDiv;
             htmlCustom += closeDiv;
+        
+        firstSenderBubbleObj = document.getElementsByClassName('d-flex justify-content-end mb-4'[0]);
+        if (firstSenderBubbleObj.length > 0) {
+            senderBubbleObj = firstSenderBubbleObj[firstSenderBubbleObj.length - 1];
+        } else {
+            senderBubbleObj = firstSenderBubbleObj[0];
+        }
+        sendAvatarToBottom($(senderBubbleObj)[0]);
+        
             
      } else { // OTHER PEOPLE
         htmlCustom += buildChatBubbles.receiverContainer;
@@ -111,6 +124,14 @@ firebase.database().ref("messages").on("child_added", function (snapshot) {
         htmlCustom += closeDiv;
         htmlCustom += closeDiv;
         htmlCustom += closeDiv;
+
+        var receiverBubbleObj = document.getElementsByClassName('d-flex justify-content-start mb-4')[0];
+        if (receiverBubbleObj.length > 0) {
+            senderBubbleObj = receiverBubbleObj[firstSenderBubbleObj.length - 1];
+        } else {
+            senderBubbleObj = receiverBubbleObj[0];
+        }
+        sendAvatarToBottom($(senderBubbleObj)[0]);
      }
 
 
@@ -136,6 +157,22 @@ function deleteMessage(self) {
 
      //delete message
      firebase.database().ref("messages").child(messageId).remove();
+}
+
+
+var sendAvatarToBottom = function(divObj) {
+    var bodyRect = document.getElementsByClassName('msg_card_body')[0].getBoundingClientRect(),
+    personRec = divObj.getBoundingClientRect(),
+    avatarTop = personRec.top - bodyRect.top;
+    avatarRight = personRec.right - bodyRect.right;
+
+    avatarBall = document.getElementsByClassName('img_cont_msg')[0];
+
+
+    avatarBall.style.position = 'absolute';
+    avatarBall.style.top = avatarTop;
+    avatarBall.style.right = avatarRight;
+
 }
 
 
