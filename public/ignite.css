@@ -1,32 +1,82 @@
 body,html{
+    position: fixed;
     height: 100%;
+    width: 100%;
     margin: 0;
     background: #7F7FD5;
-    background: -webkit-linear-gradient(to bottom right, #ffc837, #ff8037, #752b00);
-    background: linear-gradient(to bottom right, #ffc837, #ff8037, #752b00);
+    background: -webkit-linear-gradient(to bottom right, #ffc837, #ff8037, #752b00) !important;
+    background: linear-gradient(to bottom right, #ffc837, #ff8037, #752b00) !important;
 }
-
-.mainHeader {
+.message_form {
+    width: 100%;
+    padding-left: 1.5%;
+    padding-right: 2%;
+    border-radius: 500px !important;
     position: relative;
-    top: 100px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+    display: flex;
+    top: 0;
+}
+.message {
+    outline: none;
+    background-color: #00000000 !important;
+    border:0 !important;
+    color:white !important;
+    width: 100%;
+    overflow-y: auto;
+}
+.delete_icon {
+    margin-top: 0.25rem;
+    margin-right: 0.25rem;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-image: url('images/bin_icon.png');
+
+    border-radius: 4.16rem;
+    width: 1.83rem;
+    height: 1.83rem;
+}
+.send_button {
+    outline: none;
+    background-color: #00000000 !important;
+    border:0 !important;
+    color:white !important;
+}
+.logo {
+    top: 0;
+    margin: 2rem auto;
+    width: 200px;
+    height: 200px;
 }
 
-.headerText.lineOne {
-    font-size: 50px;
-    font-family: 'Roboto', sans-serif;
+.logo_ignite {
+    width: 200px;
+    height: 200px;
+}
+
+.messageContainer {
+    display: none;
+    position: absolute;
+    overflow: scroll;
+    top: 180px;
+    right: 0;
+    width: 370px;
+    height: 249px;
 }
 
 .chat{
-    margin-top: auto;
-    margin-bottom: auto;
+    top: 2rem;
+    height: 85%;
 }
+
 .card{
-    height: 500px;
-    border-radius: 15px !important;
-    background-color: rgba(80, 80, 80, 0.4) !important;
+    width: 35rem;
+    height: 100%;
+    display: flex;
+    border-radius: 1.1rem !important;
+    background-color: #50505066 !important;
+    margin: 0 auto 3rem auto;
+    border: 1px solid #3d1a02c5;
 }
 .contacts_body{
     padding:  0.75rem 0 !important;
@@ -34,15 +84,42 @@ body,html{
     white-space: nowrap;
 }
 .msg_card_body{
-    overflow-y: auto;
+    overflow-y: scroll;
+    height: auto;
 }
+
+/* ============Scroll Bar customization ==============*/
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f100;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #5b270188;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2e130088;
+  }
+  /* ============Scroll Bar customization ==============*/
+  
+
 .card-header{
     border-radius: 15px 15px 0 0 !important;
     border-bottom: 0 !important;
 }
 .card-footer{
-border-radius: 0 0 15px 15px !important;
+    padding: 0;
+border-radius: 0 0 0.625rem 0.625rem !important;
     border-top: 0 !important;
+background-color: #220f00ab;
 }
 .container{
     align-content: center;
@@ -58,7 +135,7 @@ border-radius: 0 0 15px 15px !important;
    outline:0px !important;
 }
 .type_msg{
-    background-color: rgba(0,0,0,0.3) !important;
+    background-color: #0000008a !important;
     border:0 !important;
     color:white !important;
     height: 60px !important;
@@ -68,16 +145,9 @@ border-radius: 0 0 15px 15px !important;
      box-shadow:none !important;
    outline:0px !important;
 }
-.attach_btn{
-border-radius: 15px 0 0 15px !important;
-background-color: rgba(0,0,0,0.3) !important;
-    border:0 !important;
-    color: white !important;
-    cursor: pointer;
-}
 .send_btn{
 border-radius: 0 15px 15px 0 !important;
-background-color: rgba(0,0,0,0.3) !important;
+background-color: #0000008a !important;
     border:0 !important;
     color: white !important;
     cursor: pointer;
@@ -102,9 +172,9 @@ background-color: rgba(0,0,0,0.3) !important;
     background-color: rgba(0,0,0,0.3);
 }
 .user_img{
-    height: 70px;
-    width: 70px;
-    border:1.5px solid #f5f6fa;
+    height: 100%;
+    width: 100%;
+    right: 0;
 
 }
 .user_img_msg{
@@ -114,13 +184,13 @@ background-color: rgba(0,0,0,0.3) !important;
 
 }
 .img_cont{
-    position: relative;
-    height: 70px;
-    width: 70px;
+    margin: 0 auto 0 auto;
+    height: 6rem;
+    width: 6rem;
 }
-.img_cont_msg{
-    height: 40px;
-    width: 40px;
+.rounded-circle.user_img_msg{
+    height: 1.83rem;
+    width: 1.83rem;
 }
 .online_icon{
 position: absolute;
@@ -168,11 +238,13 @@ padding: 10px;
 position: relative;
 }
 .msg_cotainer_send{
+max-width: 50%;
 margin-top: auto;
 margin-bottom: auto;
-margin-right: 10px;
-border-radius: 25px;
-background-color: #78e08f;
+margin-right: 0.4rem;
+border-radius: 1.2rem;
+background: -webkit-linear-gradient(to bottom right, #ffc837, #ffb237, #752b00) !important;
+background: linear-gradient(to bottom right, #ffa837, #ff8037, #be5b21) !important;
 padding: 10px;
 position: relative;
 }
@@ -192,6 +264,7 @@ font-size: 10px;
 }
 .msg_head{
 position: relative;
+background-color: #5b270188;
 }
 #action_menu_btn{
 position: absolute;
@@ -234,4 +307,73 @@ background-color: rgba(0,0,0,0.2);
 .contacts_card{
 margin-bottom: 15px !important;
 }
+}
+
+/* #### Mobile Phones #### */
+@media all and (max-width: 590px) {
+
+    /* ============Scroll Bar customization ==============*/
+    /* width */
+    ::-webkit-scrollbar {
+        width: 4px;
+    }
+    
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #f1f1f100;
+    }
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #5b270188;
+        border-radius: 50px;
+    }
+    
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #2e130088;
+    }
+    /* ============Scroll Bar customization ==============*/
+
+    .card {
+        width: auto;
+        border-radius: 0px !important;
+    }
+    .msg_card_body {
+        padding-right: 0.3rem;
+    }
+    .msg_cotainer_send, .msg_cotainer {
+        font-size: 0.9rem;
+        line-height: 1rem;
+    }
+    .chat {
+        height: 100%;
+        top: 0;
+        padding: 0;
+    }
+    .msg_head {
+        border-radius: 0 !important;
+    }
+    .card-footer {
+        border-radius: 0 !important;
+    }
+    .message_form {
+        padding-top: 0.9rem;
+        padding-bottom: 0.9rem;
+    }
+    .message {
+        border-radius: 25px;
+        background-color: rgba(0, 0, 0, 0.534) !important;
+        padding-left: 0.7rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;;
+    }
+    .send_button {
+        color: #ffffffaf !important;
+        font-size: 0.9rem;
+    }
+    .img_cont {
+        height: 3rem;
+        width: 3rem;
+    }
 }

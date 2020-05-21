@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=1920, initial-scale=1.0">
+	 <meta charset="UTF-8">
+	 <!-- Scales to device width, good for Mobiles -->
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+	 <!-- Activates No-Cache -->
+	 <meta http-equiv="cache-control" content="no-cache" />
      <title>Ignite Chat</title>
-	 <link rel="stylesheet" href="ignite.css">
 	 <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	 <link rel="stylesheet" href="ignite.css?">
      <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-     <h1>Ignite Chat</h1>
-	 <ul id="messages"></ul>
-	 <!-- Create a form to send the message-->
-	<form onsubmit="return sendMessage();">
-		<input id="message" placeholder="Enter Message" autocomplete="off">
-
-		<input type="submit">
-	</form>
+	 <div class="messageContainer">
+		<ul id="messages"></ul>
+	 </div>
 
 
 
@@ -31,16 +30,7 @@
 						<div class="card-header msg_head">
 							<div class="d-flex bd-highlight">
 								<div class="img_cont">
-									<img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img">
-									<span class="online_icon"></span>
-								</div>
-								<div class="user_info">
-									<span>Chat with Khalid</span>
-									<p>1767 Messages</p>
-								</div>
-								<div class="video_cam">
-									<span><i class="fas fa-video"></i></span>
-									<span><i class="fas fa-phone"></i></span>
+									<img src="images/Logo_ignite_web.png" class="rounded-circle user_img">
 								</div>
 							</div>
 							<span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
@@ -53,7 +43,7 @@
 								</ul>
 							</div>
 						</div>
-						<div class="card-body msg_card_body">
+						<div class="card-body msg_card_body" id="chat_wrapper">
 							<div class="d-flex justify-content-start mb-4">
 								<div class="img_cont_msg">
 									<img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg">
@@ -120,13 +110,11 @@
 						</div>
 						<div class="card-footer">
 							<div class="input-group">
-								<div class="input-group-append">
-									<span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
-								</div>
-								<textarea name="" class="form-control type_msg" placeholder="Type your message..."></textarea>
-								<div class="input-group-append">
-									<span class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
-								</div>
+								<!-- <textarea name="" class="form-control type_msg" placeholder="Type here..."></textarea> -->
+								<!-- Create a form to send the message-->
+								<form id="message_form" class="message_form">
+									<input class="message" id="message" placeholder="Enter Message" autocomplete="off"><input class="send_button" type="submit">
+								</form>
 							</div>
 						</div>
 					</div>
@@ -154,62 +142,7 @@
 <!-- Initialize Firebase -->
 <script src="/__/firebase/init.js"></script>
 
-<script>
-     var myName = prompt("Enter your Name:");
-
-	 if (!myName) {
-		myName = "Anonymous";
-	 }
-
-     function sendMessage() {
-          // get message
-          var message = document.getElementById("message").value;
-          var messageInput = document.getElementById("message");
-
-          //save in database
-          firebase.database().ref('messages').push().set({
-               "sender": myName,
-               "message": message
-          });
-
-          // delete message after sending
-          messageInput.value = '';
-          // prevent form from submitting
-          return false;
-     }
-
-     //listen for incoming messages
-     firebase.database().ref("messages").on("child_added", function (snapshot) {
-          var htmlCustom = "";
-          // give each message a unique ID
-          htmlCustom += "<li id='message-" + snapshot.key + "'>";
-               //show delete vutton if message is sent by me
-               if (snapshot.val().sender === myName) {
-                    htmlCustom += "<button data-id='" + snapshot.key + "' onclick='deleteMessage(this)'>";
-                         htmlCustom += "Delete"
-                    htmlCustom += "</button>";
-               }
-               htmlCustom += snapshot.val().sender + ": " + snapshot.val().message;
-          htmlCustom += "</li>";
-
-          document.getElementById("messages").innerHTML += htmlCustom;
-     });
-
-     function deleteMessage(self) {
-          //get message ID
-          var messageId = self.getAttribute("data-id");
-
-          //delete message
-          firebase.database().ref("messages").child(messageId).remove();
-     }
-
-     //attach listener for delete message
-     firebase.database().ref("messages").on("child_removed", function (snapshot) {
-          // remove message node
-          document.getElementById("message-" + snapshot.key).innerHTML = "This message has been removed";
-     })
-</script>
-
-<script src="/ignite.js"></script>
+<script type="text/javascript" src="ignite.js"></script>
+<script type="text/javascript" src="CONSTANTS.js"></script>
 
 </html>
