@@ -38,7 +38,7 @@ var buildChatBubbles = {
             
 }
 
-cycleBackground(10);
+cycleBackground();
 
 if (!myName) {
    myName = "Anonymous";
@@ -63,22 +63,13 @@ if (myName) {
 
 // ----------------- Functions -----------------
 
-function cycleBackground(timeInSeconds) {
-    timeInSeconds = timeInSeconds * 1000;
+function cycleBackground() {
     var imageDiv = document.getElementById('popupWrapper');
     var i = Math.floor(backgroundImages.length * Math.random());
 
-    if (isSignedIn === true) {
+    if (isSignedIn === true) { //if Im signed in stop this function
         return;
     }
-
-    // setInterval(function() {
-    //     imageDiv.style.backgroundImage = "url(" + backgroundImages[i] + ")";
-    //     i = i + 1;
-    //     if (i == backgroundImages.length) {
-    //         i =  0;
-    //     }
-    // }, timeInSeconds);
 
     imageDiv.style.backgroundImage = "url(" + backgroundImages[i] + ")";
     i = i + 1;
