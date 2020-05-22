@@ -1,7 +1,7 @@
 
 // ----------------- Public Vars -----------------
 var myName = 'Miguel';
-var isSignedIn = true;
+var isSignedIn = false;
 // var myName = prompt("Enter your Name:");
 var date = new Date();
 var now = pad(date.getHours(),2) + ':' + pad(date.getMinutes(),2);
@@ -12,9 +12,9 @@ var senderPictures = {
 }
 
 var backgroundImages = [
-    'images/mountain1.jpg',
-    'images/mountain2.jpg',
-    'images/mountain3.jpg'
+    'images/mountain11.jpg',
+    'images/mountain22.jpg',
+    'images/mountain33.jpg'
 ]
 
 
@@ -38,7 +38,7 @@ var buildChatBubbles = {
             
 }
 
-cycleBackground(3);
+cycleBackground(10);
 
 if (!myName) {
    myName = "Anonymous";
@@ -66,19 +66,25 @@ if (myName) {
 function cycleBackground(timeInSeconds) {
     timeInSeconds = timeInSeconds * 1000;
     var imageDiv = document.getElementById('popupWrapper');
-    var i = 0;
+    var i = Math.floor(backgroundImages.length * Math.random());
 
     if (isSignedIn === true) {
         return;
     }
 
-    setInterval(function() {
-        imageDiv.style.backgroundImage = "url(" + backgroundImages[i] + ")";
-        i = i + 1;
-        if (i == backgroundImages.length) {
-            i =  0;
-        }
-    }, timeInSeconds);
+    // setInterval(function() {
+    //     imageDiv.style.backgroundImage = "url(" + backgroundImages[i] + ")";
+    //     i = i + 1;
+    //     if (i == backgroundImages.length) {
+    //         i =  0;
+    //     }
+    // }, timeInSeconds);
+
+    imageDiv.style.backgroundImage = "url(" + backgroundImages[i] + ")";
+    i = i + 1;
+    if (i == backgroundImages.length) {
+        i =  0;
+    }
 }
 
 // send the message
