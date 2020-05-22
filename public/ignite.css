@@ -11,12 +11,13 @@ body,html{
     position: absolute;
     height: 100%;
     width: 100%;
-    overflow: hidden;
-    background-position: center;
+    background: url(images/mountain1.jpg), url(images/Logo_stamped.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
-    background-image: url(images/mountain1.jpg);
+    background-size: cover, 6rem 9rem;
+    background-position: center, center 6rem;
     z-index: 99;
+
+    background-blend-mode: multiply;
 
 }
 .popupBackground {

@@ -71,7 +71,7 @@ function cycleBackground() {
         return;
     }
 
-    imageDiv.style.backgroundImage = "url(" + backgroundImages[i] + ")";
+    imageDiv.style.backgroundImage = "url(" + backgroundImages[i] + ")" + ", url(images/Logo_stamped.jpg)";
     i = i + 1;
     if (i == backgroundImages.length) {
         i =  0;
