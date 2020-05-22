@@ -1,6 +1,7 @@
 
 // ----------------- Public Vars -----------------
 var myName = 'Miguel';
+var isSignedIn = true;
 // var myName = prompt("Enter your Name:");
 var date = new Date();
 var now = pad(date.getHours(),2) + ':' + pad(date.getMinutes(),2);
@@ -10,9 +11,15 @@ var senderPictures = {
     default: imgUrl += 'Chat_Heads/Logo_ignite_chat.png'
 }
 
+var backgroundImages = [
+    'images/mountain1.jpg',
+    'images/mountain2.jpg',
+    'images/mountain3.jpg'
+]
 
 
-// Build Bubbles
+
+// Build Bubble vars
 var buildChatBubbles = {
     // Sender
     senderContainer: '<div class="d-flex justify-content-end mb-4">',
@@ -31,7 +38,7 @@ var buildChatBubbles = {
             
 }
 
-
+cycleBackground(3);
 
 if (!myName) {
    myName = "Anonymous";
@@ -55,6 +62,24 @@ if (myName) {
 
 
 // ----------------- Functions -----------------
+
+function cycleBackground(timeInSeconds) {
+    timeInSeconds = timeInSeconds * 1000;
+    var imageDiv = document.getElementById('popupWrapper');
+    var i = 0;
+
+    if (isSignedIn === true) {
+        return;
+    }
+
+    setInterval(function() {
+        imageDiv.style.backgroundImage = "url(" + backgroundImages[i] + ")";
+        i = i + 1;
+        if (i == backgroundImages.length) {
+            i =  0;
+        }
+    }, timeInSeconds);
+}
 
 // send the message
 $('#message_form').submit(function(e){
