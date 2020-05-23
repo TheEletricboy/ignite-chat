@@ -451,6 +451,9 @@ margin-bottom: 15px !important;
     }
     /* ============Scroll Bar customization ==============*/
 
+
+
+
     .card {
         width: auto;
         border-radius: 0px !important;
@@ -491,5 +494,15 @@ margin-bottom: 15px !important;
     .img_cont {
         height: 3rem;
         width: 3rem;
+    }
+}
+
+@media all and (max-height: 700px) {
+    .popupWrapper {
+        background-position: center, center 1rem;
+    }
+    .popupBackground {
+        margin-top: 12rem;
+        height: 27rem;
     }
 }
