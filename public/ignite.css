@@ -20,6 +20,89 @@ body,html{
     background-blend-mode: multiply;
 
 }
+.signInWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+.avatarSignInWrapper {
+    position: relative;
+    margin-top: 2rem;
+    width: 100%;
+    height: 8rem;
+}
+.avatarSignIn {
+    width: 8rem;
+    height: 100%;
+    margin: auto;
+    border-radius: 100%;
+    filter: grayscale(100%);
+    filter: contrast(30%);
+    background-color: rgba(0, 0, 0, 0.575);
+
+    background: url(images/userIcon.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.headerWrap {
+    width: 100%;
+    height: 6rem;
+    text-align: center;
+
+    color: #363636;
+}
+p.lineOne {
+    font-size: 3rem;
+    font-weight: bolder;
+    margin-top: 3rem;
+}
+p.lineTwo {
+    font-weight: bolder;
+    margin-top: -1rem;
+}
+.bodyWrapper {
+    height: 65%;
+}
+.user_form {
+    background-color: black;
+    width: 20rem;
+    display: flex;
+    margin: auto;
+}
+.userInput {
+    width: 100%;
+    border: none;
+    padding-left: 0.7rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    background-color: rgb(112, 112, 112);
+
+    /* windows focus border */
+    outline:0;
+}
+.authenticateBtn {
+    width: 3rem;
+    border: none;
+    background-color: #4e4e4e;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #252525;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #8b8b8b4f;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: #8b8b8b4f;
+  }
+  .header {
+      text-align: center;
+      margin-top: 3rem;
+      margin-bottom: 2rem;
+  }
 .popupBackground {
     margin-top: 20rem;
     margin-left: auto;
@@ -32,6 +115,7 @@ body,html{
 
     -webkit-backdrop-filter: blur(10px) !important;
     backdrop-filter: blur(10px) !important;
+    flex-direction: column;
 }
 .popupForeground {
     backdrop-filter: blur(0.8)
