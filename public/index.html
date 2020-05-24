@@ -40,8 +40,20 @@
 								<div class="header">Please set your user name</div>
 								<form id="user_form" class="user_form">
 									<input class="userInput" id="userInput" placeholder="Enter Username" autocomplete="off">
-									<button class="authenticateBtn" type="submit">Submit</button>
+									<button class="authenticateBtn" type="button" onclick="setUserName()">Submit</button>
 								</form>
+								<div class="alert alert-danger userNameAlert" id="userNameAlert" role="alert" style="display: none;">
+									<div class="triangle"></div>
+									<strong>Oof!</strong> Set your name here and try again
+								</div>
+								<div class="authorNameWrapper">
+									<div class="authorName">Made by <strong>Miguel Vieira</strong></div>
+									<div class="socialBtns">
+										<button class="githubBtn" onclick="window.open('https://github.com/TheEletricboy')" ></button>
+										<button class="youtubeBtn" onclick="window.open('https://www.youtube.com/user/TheEletricboy/videos?view_as=subscriber')" ></button>
+										<button class="linkedInBtn" onclick="window.open('https://www.linkedin.com/in/miguelvieiradeveloper/')" ></button>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
