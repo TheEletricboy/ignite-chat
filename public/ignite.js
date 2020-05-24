@@ -76,7 +76,7 @@ function init() {
             warningMessage.innerHTML += triangle + '<strong>Oof!</strong> Set your name here and try again';
         } else { //set username
             //max character limit
-            if (userNameInput.value.length > 2) {
+            if (userNameInput.value.length > 20) {
                 warningMessage.textContent = ''; //reset
                 warningMessage.innerHTML += triangle + '<strong>Oof!</strong> Max Character Limit is 20 sorry :/';
                 warningMessage.style.removeProperty('display'); //display alert
