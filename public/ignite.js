@@ -67,16 +67,26 @@ function init() {
 // ----------------- Functions -----------------
     function setUserName() {
         var userNameInput = document.getElementById('userInput');
+        var warningMessage = document.getElementById('userNameAlert');
+        var triangle = '<div class="triangle"></div>';
 
         if (userNameInput.value === '') { //nothing is written
-            var warningMessage = document.getElementById('userNameAlert');
             warningMessage.style.removeProperty('display'); //display alert
+            warningMessage.textContent = '';
+            warningMessage.innerHTML += triangle + '<strong>Oof!</strong> Set your name here and try again';
         } else { //set username
-            var popupWrapper = document.getElementById('popupWrapper');
+            //max character limit
+            if (userNameInput.value.length > 2) {
+                warningMessage.textContent = ''; //reset
+                warningMessage.innerHTML += triangle + '<strong>Oof!</strong> Max Character Limit is 20 sorry :/';
+                warningMessage.style.removeProperty('display'); //display alert
+            } else {
+                var popupWrapper = document.getElementById('popupWrapper');
 
-            myName = userNameInput.value;
-            isSignedIn = true;
-            popupWrapper.style.display = "none";
+                myName = userNameInput.value;
+                isSignedIn = true;
+                popupWrapper.style.display = "none"; //reset alertbox
+            }
         }
     }
 
