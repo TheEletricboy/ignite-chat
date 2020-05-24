@@ -11,6 +11,7 @@
 	 <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 	 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	 <link rel="stylesheet" href="ignite.css?">
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
      <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
@@ -42,7 +43,7 @@
 									<input class="userInput" id="userInput" placeholder="Enter Username" autocomplete="off">
 									<button class="authenticateBtn" type="button" onclick="setUserName()">Submit</button>
 								</form>
-								<div class="alert alert-danger userNameAlert" id="userNameAlert" role="alert" style="display: none;">
+								<div class="alert alert-danger userNameAlert animate__animated animate__fadeInDown" id="userNameAlert" role="alert" style="display: none;">
 									<div class="triangle"></div>
 								</div>
 								<div class="authorNameWrapper">
@@ -176,5 +177,6 @@
 
 <script type="text/javascript" src="ignite.js"></script>
 <script type="text/javascript" src="CONSTANTS.js"></script>
+<script type="text/javascript" src="/js/messagesBuildComponent.js"></script>
 
 </html>

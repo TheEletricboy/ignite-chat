@@ -78,6 +78,9 @@ p.lineTwo {
     margin: 1rem auto;
     border: 0;
     border-radius: 10rem;
+
+    animation: fadeInDown; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 0.1s; /* don't forget to set a duration! */
 }
 .userNameAlert > .triangle {
     position: absolute;
