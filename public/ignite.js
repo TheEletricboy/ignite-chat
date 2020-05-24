@@ -165,6 +165,12 @@ function init() {
             document.getElementById("chat_wrapper").innerHTML += htmlCustom;
             autoScrollDown();
         });
+
+        //attach listener for delete message
+        firebase.database().ref("messages").on("child_removed", function (snapshot) {
+            // remove message node
+            document.getElementById("message-" + snapshot.key).innerHTML = "This message has been removed";
+        })
     }
 
 
@@ -185,12 +191,6 @@ function cycleBackground() {
         i =  0;
     }
 }
-
-//attach listener for delete message
-firebase.database().ref("messages").on("child_removed", function (snapshot) {
-    // remove message node
-    document.getElementById("message-" + snapshot.key).innerHTML = "This message has been removed";
-})
 
 function deleteMessage(self) {
      //get message ID

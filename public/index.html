@@ -38,7 +38,7 @@
 							<div class="bodyWrapper">
 								<div class="bodyHeader"></div>
 								<div class="header">Please set your user name</div>
-								<form id="user_form" class="user_form">
+								<form id="user_form" class="user_form" onsubmit="setUserName(); return false">
 									<input class="userInput" id="userInput" placeholder="Enter Username" autocomplete="off">
 									<button class="authenticateBtn" type="button" onclick="setUserName()">Submit</button>
 								</form>
