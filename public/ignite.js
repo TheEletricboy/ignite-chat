@@ -85,6 +85,7 @@ function init() {
 
                 myName = userNameInput.value;
                 isSignedIn = true;
+                document.getElementById('chat').style.removeProperty('display');
                 popupWrapper.style.display = "none"; //reset alertbox
             }
         }
