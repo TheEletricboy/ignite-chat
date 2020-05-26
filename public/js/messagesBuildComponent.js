@@ -47,7 +47,7 @@ function messagesBuildComponent() {
             htmlCustom += buildChatBubbles.receiverContainer;
                 htmlCustom += buildChatBubbles.receiverPicContainer;
                     htmlCustom += buildChatBubbles.receiverPic + closeDiv;
-                htmlCustom += buildChatBubbles.receiverBubble + snapshot.key + '">';
+                htmlCustom += buildChatBubbles.receiverBubble + " id='message-" + snapshot.key + "'" + '">';
                 htmlCustom += snapshot.val().sender + ": " + snapshot.val().message;
                     htmlCustom += buildChatBubbles.receiverTimeSent;
             
