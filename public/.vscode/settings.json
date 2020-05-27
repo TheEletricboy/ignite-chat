@@ -1,0 +1,11 @@
+{
+    "liveServer.settings.port": 5500,
+    "liveServer.settings.root": "/public",
+    "liveServer.settings.CustomBrowser": "chrome",
+    "liveServer.settings.https": {
+      "enable": true,
+      "cert": "C:/GitLocal/Ignite-chat/localhost.pem",
+      "key": "C:/GitLocal/Ignite-chat/localhost.key",
+      "passphrase": "1234"
+    }
+  }

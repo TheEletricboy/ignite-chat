@@ -58,6 +58,11 @@ if (myName) {
 
 
 // ----------------- Functions -----------------
+    window.addEventListener('load', function() {
+        const loader = document.querySelector('.loader');
+        loader.className += ' invisible';
+    });
+
     function setUserName() {
         var userNameInput = document.getElementById('userInput');
         var warningMessage = document.getElementById('userNameAlert');
