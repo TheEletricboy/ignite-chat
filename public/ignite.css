@@ -7,6 +7,16 @@ body,html{
     background: -webkit-linear-gradient(to bottom right, #ffc837, #ff8037, #752b00) !important;
     background: linear-gradient(to bottom right, #ffc837, #ff8037, #752b00) !important;
 }
+.logo-shadow {
+    background-image: url(images/Logo_stamped_dropShadow.png);
+    width: 8.5rem;
+    height: 13.2rem;
+    background-size: contain;
+    background-position-x: center;
+    background-repeat: no-repeat;
+
+    margin-bottom: 3rem;
+}
 .loader {
     position: fixed;
     z-index: 999;
@@ -29,16 +39,6 @@ body,html{
 
 .generateQuote {
     margin-bottom: 1rem;
-}
-.logo-shadow {
-    background-image: url(images/Logo_stamped_dropShadow.png);
-    width: 8.5rem;
-    height: 13.2rem;
-    background-size: contain;
-    background-position-x: center;
-    background-repeat: no-repeat;
-
-    margin-bottom: 3rem;
 }
 
 /* PAGE LOADER ELIPSIS */

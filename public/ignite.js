@@ -17,6 +17,13 @@ var backgroundImages = [
     'images/mountain33.jpg'
 ]
 
+var loaderQuotes = [
+    '"Giving chat midgets API Keys"',
+    '"Deleting Racism - FAILED"',
+    '"RRRR POOOOOOOOOOT"',
+    '"Loading Kitten Pictures"'
+]
+
 
 
 // Build Bubble vars
@@ -58,7 +65,8 @@ if (myName) {
 
 
 // ----------------- Functions -----------------
-    //onWindow load hide the loader
+    cycleQuotes();
+    // onWindow load hide the loader
     window.addEventListener('load', function() {
         const loader = document.querySelector('.loader');
         loader.className += ' invisible';
@@ -122,4 +130,10 @@ function autoScrollDown() {
 
 function pad(num, size){ 
     return ('000000000' + num).substr(-size);
+}
+
+function cycleQuotes() {
+    var randomItem = loaderQuotes[Math.floor(Math.random() * loaderQuotes.length)];
+    document.getElementById('loaderQuote').innerHTML = '';
+    document.getElementById('loaderQuote').innerHTML = randomItem;
 }
