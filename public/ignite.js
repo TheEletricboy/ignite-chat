@@ -58,6 +58,7 @@ if (myName) {
 
 
 // ----------------- Functions -----------------
+    //onWindow load hide the loader
     window.addEventListener('load', function() {
         const loader = document.querySelector('.loader');
         loader.className += ' invisible';
