@@ -1,6 +1,7 @@
 
 // ----------------- Public Vars -----------------
-var myName = 'Miguel';
+var myName = '';
+var isSignedIn = true;
 // var myName = prompt("Enter your Name:");
 var date = new Date();
 var now = pad(date.getHours(),2) + ':' + pad(date.getMinutes(),2);
@@ -10,9 +11,22 @@ var senderPictures = {
     default: imgUrl += 'Chat_Heads/Logo_ignite_chat.png'
 }
 
+var backgroundImages = [
+    'images/mountain11.jpg',
+    'images/mountain22.jpg',
+    'images/mountain33.jpg'
+]
+
+var loaderQuotes = [
+    '"Giving chat midgets API Keys"',
+    '"Deleting Racism - FAILED"',
+    '"RRRR POOOOOOOOOOT"',
+    '"Loading Kitten Pictures"'
+]
 
 
-// Build Bubbles
+
+// Build Bubble vars
 var buildChatBubbles = {
     // Sender
     senderContainer: '<div class="d-flex justify-content-end mb-4">',
@@ -31,9 +45,7 @@ var buildChatBubbles = {
             
 }
 
-
-
-if (!myName) {
+if (myName === null) {
    myName = "Anonymous";
 }
 
@@ -52,83 +64,66 @@ if (myName) {
 
 
 
-
-
 // ----------------- Functions -----------------
-
-// send the message
-$('#message_form').submit(function(e){
-   // prevent form from submitting
-   e.preventDefault();
-   // get message
-   var messageInput = document.getElementById("message");
-   var message = messageInput.value;
-
-   console.log(message);
-
-   //save in database
-   firebase.database().ref('messages').push().set({
-       "sender": myName,
-       "message": message
-   });
-
-   // delete message after sending
-   messageInput.value = '';
+cycleQuotes();
+// onWindow load hide the loader
+window.addEventListener('load', function() {
+    const loader = document.querySelector('.loader');
+    loader.className += ' invisible';
 });
 
-// DISPLAY IMAGES
-//listen for incoming messages
-firebase.database().ref("messages").on("child_added", function (snapshot) {
-     var htmlCustom = "";
-     var closeDiv = '</div>';
+testJs(); //a script for testing values
 
-     // SENDER (Me)
-     if (snapshot.val().sender === myName) {
-        htmlCustom += buildChatBubbles.senderContainer;
-            htmlCustom += "<button data-id='" + snapshot.key + "' class='delete_icon' onclick='deleteMessage(this)'></button>",
-            htmlCustom += buildChatBubbles.senderBubble + snapshot.key + '">';
-            htmlCustom += snapshot.val().sender + ": " + snapshot.val().message;
-                htmlCustom += buildChatBubbles.senderTimeSent;
-            htmlCustom += buildChatBubbles.senderPicContainer;
-                htmlCustom += buildChatBubbles.senderPic;
-            
-            htmlCustom += closeDiv;
-            htmlCustom += closeDiv;
-            htmlCustom += closeDiv;
-            htmlCustom += closeDiv;
-            htmlCustom += closeDiv;
-            
-     } else { // OTHER PEOPLE
-        htmlCustom += buildChatBubbles.receiverContainer;
-            htmlCustom += buildChatBubbles.receiverPicContainer;
-                htmlCustom += buildChatBubbles.receiverPic + closeDiv;
-            htmlCustom += buildChatBubbles.receiverBubble + snapshot.key + '">';
-            htmlCustom += snapshot.val().sender + ": " + snapshot.val().message;
-                htmlCustom += buildChatBubbles.receiverTimeSent;
-        
-        htmlCustom += closeDiv;
-        htmlCustom += closeDiv;
-        htmlCustom += closeDiv;
-        htmlCustom += closeDiv;
-        htmlCustom += closeDiv;
-     }
+function setUserName() {
+    var userNameInput = document.getElementById('userInput');
+    var warningMessage = document.getElementById('userNameAlert');
+    var triangle = '<div class="triangle"></div>';
 
+    if (userNameInput.value === '') { //nothing is written
+        warningMessage.style.removeProperty('display'); //display alert
+        warningMessage.textContent = '';
+        warningMessage.innerHTML += triangle + '<strong>Oof!</strong> Set your name here and try again';
+    } else { //set username
+        //max character limit
+        if (userNameInput.value.length > 20) {
+            warningMessage.textContent = ''; //reset
+            warningMessage.innerHTML += triangle + '<strong>Oof!</strong> Max Character Limit is 20 sorry :/';
+            warningMessage.style.removeProperty('display'); //display alert
+        } else {
+            var popupWrapper = document.getElementById('popupWrapper');
 
-     //give each message a unique ID
-    //  htmlCustom += "<li id='message-" + snapshot.key + "'>";
-    //       //show delete vutton if message is sent by me
-    //       if (snapshot.val().sender === myName) {
-    //            htmlCustom += "<button data-id='" + snapshot.key + "' onclick='deleteMessage(this)'>";
-    //                 htmlCustom += "Delete"
-    //            htmlCustom += "</button>";
-    //       }
-    //  //display message
-    //  htmlCustom += snapshot.val().sender + ": " + snapshot.val().message;
-    //  htmlCustom += "</li>";
+            myName = userNameInput.value;
+            document.getElementById('chat').style.removeProperty('display');
+            popupWrapper.style.display = "none"; //reset alertbox
+            isSignedIn = true;
 
-     document.getElementById("chat_wrapper").innerHTML += htmlCustom;
-     autoScrollDown();
-});
+            messagesBuildComponent();
+        }
+    }
+}
+
+//listener for keyTyping
+// document.onkeypress = function(e) {
+//     e = e || window.event;
+//     var charCode = (typeof e.which == "number") ? e.which : e.keyCode;
+//     if (charCode) {
+//         alert("Character typed: " + String.fromCharCode(charCode));
+//     }
+// };
+
+function cycleBackground() {
+    var imageDiv = document.getElementById('popupWrapper');
+    var i = Math.floor(backgroundImages.length * Math.random());
+
+    if (isSignedIn === false) { //if Im signed in stop this function
+        imageDiv.style.backgroundImage = "url(" + backgroundImages[i] + ")" + ", url(images/Logo_stamped.jpg)";
+        i = i + 1;
+        if (i == backgroundImages.length) {
+            i =  0;
+        }
+    }
+
+}
 
 function deleteMessage(self) {
      //get message ID
@@ -136,14 +131,10 @@ function deleteMessage(self) {
 
      //delete message
      firebase.database().ref("messages").child(messageId).remove();
+
+     //delete button
+    self.remove();
 }
-
-
-//attach listener for delete message
-firebase.database().ref("messages").on("child_removed", function (snapshot) {
-    // remove message node
-    document.getElementById("message-" + snapshot.key).innerHTML = "This message has been removed";
-})
 
 // autoscroll down function
 function autoScrollDown() {
@@ -153,4 +144,10 @@ function autoScrollDown() {
 
 function pad(num, size){ 
     return ('000000000' + num).substr(-size);
+}
+
+function cycleQuotes() {
+    var randomItem = loaderQuotes[Math.floor(Math.random() * loaderQuotes.length)];
+    document.getElementById('loaderQuote').innerHTML = '';
+    document.getElementById('loaderQuote').innerHTML = randomItem;
 }

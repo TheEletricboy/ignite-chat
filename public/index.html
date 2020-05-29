@@ -11,10 +11,19 @@
 	 <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 	 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	 <link rel="stylesheet" href="ignite.css?">
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
      <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
+	<div class="loader">
+		<div class="logo-shadow"></div>
+		<div class="generateQuote" id="loaderQuote"></div>
+		<div class="elipsis">
+			<!-- CSS elipsis -->
+			<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+		</div>
+	</div>
 	 <div class="messageContainer">
 		<ul id="messages"></ul>
 	 </div>
@@ -25,12 +34,44 @@
 
 		<div class="container-fluid h-100">
 			<div class="row justify-content-center h-100">
-				<div class="col-md-8 col-xl-6 chat">
+				<div class="popupWrapper" id="popupWrapper">
+					<div class="popupBackground">
+						<div class="avatarSignInWrapper">
+							<div class="avatarSignIn"></div>
+						</div>
+						<div class="signInWrapper">
+							<div class="headerWrap">
+								<p class="lineOne">IGNITE</p>
+								<p class="lineTwo">v0.5</p>
+							</div>
+							<div class="bodyWrapper">
+								<div class="bodyHeader"></div>
+								<div class="header">Please set your user name</div>
+								<form id="user_form" class="user_form" onsubmit="setUserName(); return false">
+									<input class="userInput" id="userInput" placeholder="Enter Username" autocomplete="off">
+									<button class="authenticateBtn" type="button" onclick="setUserName()">Submit</button>
+								</form>
+								<div class="alert alert-danger userNameAlert animate__animated animate__fadeInDown" id="userNameAlert" role="alert" style="display: none;">
+									<div class="triangle"></div>
+								</div>
+								<div class="authorNameWrapper">
+									<div class="authorName">Made by <strong>Miguel Vieira</strong></div>
+									<div class="socialBtns">
+										<button class="githubBtn" onclick="window.open('https://github.com/TheEletricboy')" ></button>
+										<button class="youtubeBtn" onclick="window.open('https://www.youtube.com/user/TheEletricboy/videos?view_as=subscriber')" ></button>
+										<button class="linkedInBtn" onclick="window.open('https://www.linkedin.com/in/miguelvieiradeveloper/')" ></button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-8 col-xl-6 chat" id="chat" style="display: none;" >
 					<div class="card">
 						<div class="card-header msg_head">
 							<div class="d-flex bd-highlight">
 								<div class="img_cont">
-									<img src="images/Logo_ignite_web.png" class="rounded-circle user_img">
+									<img src="images/Logo_stamped_dropShadow.png" class="rounded-circle user_img">
 								</div>
 							</div>
 							<span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
@@ -54,6 +95,7 @@
 								</div>
 							</div>
 							<div class="d-flex justify-content-end mb-4">
+								<button class="delete_icon" ></button>
 								<div class="msg_cotainer_send">
 									Hi Khalid i am good tnx how about you?
 									<span class="msg_time_send">8:55 AM, Today</span>
@@ -144,5 +186,6 @@
 
 <script type="text/javascript" src="ignite.js"></script>
 <script type="text/javascript" src="CONSTANTS.js"></script>
+<script type="text/javascript" src="/js/messagesBuildComponent.js"></script>
 
 </html>

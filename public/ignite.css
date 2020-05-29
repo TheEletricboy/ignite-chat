@@ -1,11 +1,304 @@
+/* TEST
+.popupWrapper {
+    display: none;
+} */
+
+
 body,html{
     position: fixed;
     height: 100%;
     width: 100%;
     margin: 0;
     background: #7F7FD5;
-    background: -webkit-linear-gradient(to bottom right, #ffc837, #ff8037, #752b00) !important;
-    background: linear-gradient(to bottom right, #ffc837, #ff8037, #752b00) !important;
+    background: url(images/mountain1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.logo-shadow {
+    background-image: url(images/Logo_stamped_dropShadow.png);
+    width: 8.5rem;
+    height: 13.2rem;
+    background-size: contain;
+    background-position-x: center;
+    background-repeat: no-repeat;
+
+    margin-bottom: 3rem;
+}
+.loader {
+    position: fixed;
+    z-index: 999;
+    top: 0;;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #3b3b3b;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.generateQuote {
+    color: #dddddd;
+    font-size: 2rem;
+}
+
+.generateQuote {
+    margin-bottom: 1rem;
+}
+
+/* PAGE LOADER ELIPSIS */
+
+.lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-ellipsis div {
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #b8b8b8;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+  .lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;
+  }
+  @keyframes lds-ellipsis1 {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes lds-ellipsis3 {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  @keyframes lds-ellipsis2 {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(24px, 0);
+    }
+  }
+  
+/* PAGE LOADER ELIPSIS */
+
+
+
+
+.popupWrapper {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: url(images/mountain1.jpg), url(images/Logo_stamped.jpg);
+    background-repeat: no-repeat;
+    background-size: cover, 6rem 9rem;
+    background-position: center, center 6rem;
+    z-index: 99;
+
+    background-blend-mode: multiply;
+
+}
+.signInWrapper {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    top: 0;
+
+    /* flex sets things verticall */
+    flex-direction: column;
+}
+.avatarSignInWrapper {
+    position: relative;
+    margin-top: 2rem;
+    width: 100%;
+    height: 8rem;
+}
+.avatarSignIn {
+    width: 8rem;
+    height: 100%;
+    margin: auto;
+    border-radius: 100%;
+    filter: grayscale(100%);
+    filter: contrast(30%);
+    background-color: rgba(0, 0, 0, 0.575);
+
+    background: url(images/userIcon.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.headerWrap {
+    width: 100%;
+    height: 6rem;
+    text-align: center;
+
+    color: #363636;
+}
+p.lineOne {
+    font-size: 3rem;
+    font-weight: bolder;
+}
+p.lineTwo {
+    font-weight: bolder;
+    margin-top: -1rem;
+}
+.bodyWrapper {
+    height: 100%;
+}
+.user_form {
+    background-color: black;
+    width: 20rem;
+    display: flex;
+    margin: auto;
+}
+.userNameAlert {
+    width: 20rem;
+    margin: 1rem auto;
+    border: 0;
+    border-radius: 10rem;
+
+    animation: fadeInDown; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 0.1s; /* don't forget to set a duration! */
+}
+.userNameAlert > .triangle {
+    position: absolute;
+    top: -0.5rem;
+    width: 0;
+    height: 0;
+	border-left: 0.5rem solid transparent;
+	border-right: 0.5rem solid transparent;
+	border-bottom: 0.65rem solid #f8d7da;
+}
+.authorNameWrapper {
+    position: absolute;
+    display: flex;
+    text-align: center;
+    width: 100%;
+    bottom: 2rem;
+
+    flex-direction: column;
+}
+.socialBtns {
+    flex-direction: row;
+    margin-top: 0.6rem;
+}
+.socialBtns > .githubBtn {
+    width: 1.5rem;
+    height: 1.5rem;
+    background: url(images/github.png);
+    background-size: cover;
+    border: 0;
+    border-radius: 100%;
+
+    outline:0;
+}
+.socialBtns > .githubBtn:hover {
+    background-color: #00000052;
+}
+.socialBtns > .youtubeBtn {
+    width: 2rem;
+    height: 1.4rem;
+    margin-left: 0.2rem;
+    background: url(images/youtube.png);
+    background-size: contain;
+    border-radius: 0.5rem;
+    background-repeat: no-repeat;
+    border: 0;
+
+    outline:0;
+}
+.socialBtns > .youtubeBtn:hover {
+    background-color: #00000052;
+}
+.socialBtns > .linkedInBtn {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: 0.2rem;
+    background: url(images/linkedIn.png);
+    background-size: contain;
+    border: 0;
+    border-radius: 0.2rem;
+
+    outline:0;
+}
+.socialBtns > .linkedInBtn:hover {
+    background-color: #00000052;
+}
+.userInput {
+    width: 100%;
+    border: none;
+    padding-left: 0.7rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    background-color: #707070;
+
+    /* windows focus border */
+    outline:0;
+}
+.authenticateBtn {
+    width: 4rem;
+    border: none;
+    background-color: #4e4e4e;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #252525;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #252525;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: #252525;
+  }
+  .header {
+      text-align: center;
+      margin-top: 3rem;
+      margin-bottom: 2rem;
+  }
+.popupBackground {
+    margin-top: 20rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    background-color: #8b8b8b4f;
+    border-radius: 5px;
+    width: 25rem !important;
+    height: 35rem;
+
+    -webkit-backdrop-filter: blur(10px) !important;
+    backdrop-filter: blur(10px) !important;
+    flex-direction: column;
+}
+.popupForeground {
+    backdrop-filter: blur(0.8)
 }
 .message_form {
     width: 100%;
@@ -25,6 +318,7 @@ body,html{
     overflow-y: auto;
 }
 .delete_icon {
+    outline:0;
     margin-top: 0.25rem;
     margin-right: 0.25rem;
     background-repeat: no-repeat;
@@ -32,9 +326,11 @@ body,html{
     background-position: center;
     background-image: url('images/bin_icon.png');
 
+    border: none;
+    background-color: transparent;
     border-radius: 4.16rem;
-    width: 1.83rem;
-    height: 1.83rem;
+    width: 1.4rem;
+    height: 1.4rem;
 }
 .send_button {
     outline: none;
@@ -76,7 +372,7 @@ body,html{
     border-radius: 1.1rem !important;
     background-color: #50505066 !important;
     margin: 0 auto 3rem auto;
-    border: 1px solid #3d1a02c5;
+    border: 1px solid #2c2c2c;
 }
 .contacts_body{
     padding:  0.75rem 0 !important;
@@ -86,6 +382,10 @@ body,html{
 .msg_card_body{
     overflow-y: scroll;
     height: auto;
+    background-color: #8b8b8b4f;
+
+    -webkit-backdrop-filter: blur(10px) !important;
+    backdrop-filter: blur(10px) !important;
 }
 
 /* ============Scroll Bar customization ==============*/
@@ -117,9 +417,9 @@ body,html{
 }
 .card-footer{
     padding: 0;
-border-radius: 0 0 0.625rem 0.625rem !important;
+    border-radius: 0 0 0.625rem 0.625rem !important;
     border-top: 0 !important;
-background-color: #220f00ab;
+    background-color: #383838;
 }
 .container{
     align-content: center;
@@ -186,7 +486,7 @@ background-color: #0000008a !important;
 .img_cont{
     margin: 0 auto 0 auto;
     height: 6rem;
-    width: 6rem;
+    width: 4rem;
 }
 .rounded-circle.user_img_msg{
     height: 1.83rem;
@@ -243,8 +543,7 @@ margin-top: auto;
 margin-bottom: auto;
 margin-right: 0.4rem;
 border-radius: 1.2rem;
-background: -webkit-linear-gradient(to bottom right, #ffc837, #ffb237, #752b00) !important;
-background: linear-gradient(to bottom right, #ffa837, #ff8037, #be5b21) !important;
+background-color: #666666c2;
 padding: 10px;
 position: relative;
 }
@@ -252,7 +551,7 @@ position: relative;
 position: absolute;
 left: 0;
 bottom: -15px;
-color: rgba(255,255,255,0.5);
+color: #ffffff80;
 font-size: 10px;
 }
 .msg_time_send{
@@ -264,7 +563,7 @@ font-size: 10px;
 }
 .msg_head{
 position: relative;
-background-color: #5b270188;
+background-color: #707070;
 }
 #action_menu_btn{
 position: absolute;
@@ -335,6 +634,9 @@ margin-bottom: 15px !important;
     }
     /* ============Scroll Bar customization ==============*/
 
+
+
+
     .card {
         width: auto;
         border-radius: 0px !important;
@@ -374,6 +676,14 @@ margin-bottom: 15px !important;
     }
     .img_cont {
         height: 3rem;
-        width: 3rem;
+        width: 2.4rem;
+    }
+    .popupWrapper {
+        background-size: cover, 5rem 8rem;
+        background-position: center, center 2rem !important;
+    }
+    .popupBackground {
+        margin-top: 12rem;
+        height: 37rem;
     }
 }
