@@ -65,40 +65,51 @@ if (myName) {
 
 
 // ----------------- Functions -----------------
-    cycleQuotes();
-    // onWindow load hide the loader
-    window.addEventListener('load', function() {
-        const loader = document.querySelector('.loader');
-        loader.className += ' invisible';
-    });
+cycleQuotes();
+// onWindow load hide the loader
+window.addEventListener('load', function() {
+    const loader = document.querySelector('.loader');
+    loader.className += ' invisible';
+});
 
-    function setUserName() {
-        var userNameInput = document.getElementById('userInput');
-        var warningMessage = document.getElementById('userNameAlert');
-        var triangle = '<div class="triangle"></div>';
+testJs(); //a script for testing values
 
-        if (userNameInput.value === '') { //nothing is written
+function setUserName() {
+    var userNameInput = document.getElementById('userInput');
+    var warningMessage = document.getElementById('userNameAlert');
+    var triangle = '<div class="triangle"></div>';
+
+    if (userNameInput.value === '') { //nothing is written
+        warningMessage.style.removeProperty('display'); //display alert
+        warningMessage.textContent = '';
+        warningMessage.innerHTML += triangle + '<strong>Oof!</strong> Set your name here and try again';
+    } else { //set username
+        //max character limit
+        if (userNameInput.value.length > 20) {
+            warningMessage.textContent = ''; //reset
+            warningMessage.innerHTML += triangle + '<strong>Oof!</strong> Max Character Limit is 20 sorry :/';
             warningMessage.style.removeProperty('display'); //display alert
-            warningMessage.textContent = '';
-            warningMessage.innerHTML += triangle + '<strong>Oof!</strong> Set your name here and try again';
-        } else { //set username
-            //max character limit
-            if (userNameInput.value.length > 20) {
-                warningMessage.textContent = ''; //reset
-                warningMessage.innerHTML += triangle + '<strong>Oof!</strong> Max Character Limit is 20 sorry :/';
-                warningMessage.style.removeProperty('display'); //display alert
-            } else {
-                var popupWrapper = document.getElementById('popupWrapper');
+        } else {
+            var popupWrapper = document.getElementById('popupWrapper');
 
-                myName = userNameInput.value;
-                document.getElementById('chat').style.removeProperty('display');
-                popupWrapper.style.display = "none"; //reset alertbox
-                isSignedIn = true;
+            myName = userNameInput.value;
+            document.getElementById('chat').style.removeProperty('display');
+            popupWrapper.style.display = "none"; //reset alertbox
+            isSignedIn = true;
 
-                messagesBuildComponent();
-            }
+            messagesBuildComponent();
         }
     }
+}
+
+//listener for keyTyping
+// document.onkeypress = function(e) {
+//     e = e || window.event;
+//     var charCode = (typeof e.which == "number") ? e.which : e.keyCode;
+//     if (charCode) {
+//         alert("Character typed: " + String.fromCharCode(charCode));
+//     }
+// };
 
 function cycleBackground() {
     var imageDiv = document.getElementById('popupWrapper');
@@ -120,6 +131,9 @@ function deleteMessage(self) {
 
      //delete message
      firebase.database().ref("messages").child(messageId).remove();
+
+     //delete button
+    self.remove();
 }
 
 // autoscroll down function

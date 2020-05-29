@@ -1,11 +1,18 @@
+/* TEST
+.popupWrapper {
+    display: none;
+} */
+
+
 body,html{
     position: fixed;
     height: 100%;
     width: 100%;
     margin: 0;
     background: #7F7FD5;
-    background: -webkit-linear-gradient(to bottom right, #ffc837, #ff8037, #752b00) !important;
-    background: linear-gradient(to bottom right, #ffc837, #ff8037, #752b00) !important;
+    background: url(images/mountain1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .logo-shadow {
     background-image: url(images/Logo_stamped_dropShadow.png);
@@ -249,7 +256,7 @@ p.lineTwo {
     padding-left: 0.7rem;
     padding-top: 0.2rem;
     padding-bottom: 0.2rem;
-    background-color: rgb(112, 112, 112);
+    background-color: #707070;
 
     /* windows focus border */
     outline:0;
@@ -311,6 +318,7 @@ p.lineTwo {
     overflow-y: auto;
 }
 .delete_icon {
+    outline:0;
     margin-top: 0.25rem;
     margin-right: 0.25rem;
     background-repeat: no-repeat;
@@ -318,9 +326,11 @@ p.lineTwo {
     background-position: center;
     background-image: url('images/bin_icon.png');
 
+    border: none;
+    background-color: transparent;
     border-radius: 4.16rem;
-    width: 1.83rem;
-    height: 1.83rem;
+    width: 1.4rem;
+    height: 1.4rem;
 }
 .send_button {
     outline: none;
@@ -362,7 +372,7 @@ p.lineTwo {
     border-radius: 1.1rem !important;
     background-color: #50505066 !important;
     margin: 0 auto 3rem auto;
-    border: 1px solid #3d1a02c5;
+    border: 1px solid #2c2c2c;
 }
 .contacts_body{
     padding:  0.75rem 0 !important;
@@ -372,6 +382,10 @@ p.lineTwo {
 .msg_card_body{
     overflow-y: scroll;
     height: auto;
+    background-color: #8b8b8b4f;
+
+    -webkit-backdrop-filter: blur(10px) !important;
+    backdrop-filter: blur(10px) !important;
 }
 
 /* ============Scroll Bar customization ==============*/
@@ -403,9 +417,9 @@ p.lineTwo {
 }
 .card-footer{
     padding: 0;
-border-radius: 0 0 0.625rem 0.625rem !important;
+    border-radius: 0 0 0.625rem 0.625rem !important;
     border-top: 0 !important;
-background-color: #220f00ab;
+    background-color: #383838;
 }
 .container{
     align-content: center;
@@ -472,7 +486,7 @@ background-color: #0000008a !important;
 .img_cont{
     margin: 0 auto 0 auto;
     height: 6rem;
-    width: 6rem;
+    width: 4rem;
 }
 .rounded-circle.user_img_msg{
     height: 1.83rem;
@@ -529,8 +543,7 @@ margin-top: auto;
 margin-bottom: auto;
 margin-right: 0.4rem;
 border-radius: 1.2rem;
-background: -webkit-linear-gradient(to bottom right, #ffc837, #ffb237, #752b00) !important;
-background: linear-gradient(to bottom right, #ffa837, #ff8037, #be5b21) !important;
+background-color: #666666c2;
 padding: 10px;
 position: relative;
 }
@@ -538,7 +551,7 @@ position: relative;
 position: absolute;
 left: 0;
 bottom: -15px;
-color: rgba(255,255,255,0.5);
+color: #ffffff80;
 font-size: 10px;
 }
 .msg_time_send{
@@ -550,7 +563,7 @@ font-size: 10px;
 }
 .msg_head{
 position: relative;
-background-color: #5b270188;
+background-color: #707070;
 }
 #action_menu_btn{
 position: absolute;
@@ -663,16 +676,14 @@ margin-bottom: 15px !important;
     }
     .img_cont {
         height: 3rem;
-        width: 3rem;
+        width: 2.4rem;
     }
-}
-
-@media all and (max-height: 700px) {
     .popupWrapper {
-        background-position: center, center 1rem;
+        background-size: cover, 5rem 8rem;
+        background-position: center, center 2rem !important;
     }
     .popupBackground {
         margin-top: 12rem;
-        height: 27rem;
+        height: 37rem;
     }
 }
