@@ -35,5 +35,5 @@
 //         receiverBubble: '<div class="msg_cotainer">',
 //              receiverTimeSent: '<span class="msg_time">' + 
 //                 date.getHours() + ':' + date.getMinutes + '</span>'
-            
+            //NHAAAAAAAAAA
 // }
